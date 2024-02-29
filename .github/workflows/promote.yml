@@ -22,6 +22,7 @@ jobs:
           DIFF=$(rsync --stats --recursive --dry-run --exclude=specific ./staging/ ./prod/ | awk '/files transferred/{print $NF}')
 
           # If DIFF is not 0, means there are differences
+          echo "DIFF:$DIFF"
           if [ "$DIFF" -ne 0 ]; then
             # If there are differences, use rsync to copy files excluding the 'specific' directory
             rsync --checksum --recursive --exclude=specific ./staging/ ./prod/
