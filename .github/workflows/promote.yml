@@ -3,7 +3,8 @@ run-name: ${{ github.actor }} wants to promote Staging to Prod ï¿½ï¿½ï¿½ï¿½ï¿½ï¿
 on:
   push:
     branches:
-      - main
+      # - main
+      - automation
     paths-ignore:
       - '**/README.md'
 
