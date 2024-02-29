@@ -1,4 +1,4 @@
-# 12 Configure the Confluent Provider
+# 1 Configure the Confluent Provider
 terraform {
   required_providers {
     confluent = {
