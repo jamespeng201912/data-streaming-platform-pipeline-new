@@ -80,32 +80,32 @@ jobs:
         run: terraform plan -no-color -input=false -var="confluent_cloud_api_key=$TF_VAR_CONFLUENT_CLOUD_API_KEY" -var="confluent_cloud_api_secret=$TF_VAR_CONFLUENT_CLOUD_API_SECRET"
         continue-on-error: true
 
-      - uses: actions/github-script@v6
-        env:
-          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
-        with:
-          script: |
-            const output = `#### Terraform Format and Style Ì†ΩÌ∂å
-            #### Environment ${{ matrix.environment }} (CI)
-            #### Terraform Initialization ‚öôÔ∏è\`${{ steps.init.outcome }}\`
-            #### Terraform Validation Ì†æÌ¥ñ\`${{ steps.validate.outcome }}\`
-            #### Terraform Plan Ì†ΩÌ≥ñ\`${{ steps.plan.outcome }}\`
+      # - uses: actions/github-script@v6
+      #   env:
+      #     PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+      #   with:
+      #     script: |
+      #       const output = `#### Terraform Format and Style ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+      #       #### Environment ${{ matrix.environment }} (CI)
+      #       #### Terraform Initialization ‚öôÔ∏è\`${{ steps.init.outcome }}\`
+      #       #### Terraform Validation ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ\`${{ steps.validate.outcome }}\`
+      #       #### Terraform Plan ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ\`${{ steps.plan.outcome }}\`
 
-            <details><summary>Show Plan</summary>
+      #       <details><summary>Show Plan</summary>
 
-            \`\`\`\n
-            ${process.env.PLAN}
-            \`\`\`
+      #       \`\`\`\n
+      #       ${process.env.PLAN}
+      #       \`\`\`
 
-            </details>
-            *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+      #       </details>
+      #       *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            })
+      #       github.rest.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: output
+      #       })
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
