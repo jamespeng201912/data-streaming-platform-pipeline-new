@@ -1,4 +1,4 @@
-# Configure the Confluent Provider
+# 1 Configure the Confluent Provider
 terraform {
   required_providers {
     confluent = {
@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-# Configure the terraform backend to store the terraform state
+# 1 Configure the terraform backend to store the terraform state
 terraform {
   backend "s3" {
     bucket = "platform-engineering-terraform-state"
