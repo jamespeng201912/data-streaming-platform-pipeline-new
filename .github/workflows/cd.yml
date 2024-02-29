@@ -100,7 +100,9 @@ jobs:
         # if: github.ref == 'main' && github.event.pull_request.merged
         # if: github.ref == 'abc' && github.event.pull_request.merged
         run: terraform apply -auto-approve -input=false
-          -var="confluent_cloud_api_key=$TF_VAR_CONFLUENT_CLOUD_API_KEY"
-          -var="confluent_cloud_api_secret=$TF_VAR_CONFLUENT_CLOUD_API_SECRET"
+          # -var="confluent_cloud_api_key=$TF_VAR_CONFLUENT_CLOUD_API_KEY"
+          # -var="confluent_cloud_api_secret=$TF_VAR_CONFLUENT_CLOUD_API_SECRET"
+          -var="confluent_cloud_api_key=EZ3AB4AE5U3NSASV"
+          -var="confluent_cloud_api_secret=cgVo12P1v6ZlJEqK8aKdoPHmSaICmTI1NZoV43Q8uQlk7cKt/u4etS3mBsUpTybT"
           -var="confluent_cloud_environment_name=${{ matrix.environment }}"
         working-directory: ${{ matrix.environment }}
