@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - run: echo "������ Compare and sync directories"
+      - run: echo "������ Compare and sync directories "
       - name: Compare and sync directories
         run: |
           # Exclude the 'specific' directory and compare staging and prod
