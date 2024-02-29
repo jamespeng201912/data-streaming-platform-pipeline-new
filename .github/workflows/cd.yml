@@ -14,8 +14,8 @@ env:
   TF_BUCKET_STATE: ${{ vars.TF_BUCKET_STATE }}
 
   # Credentials for Confluent Cloud
-  TF_VAR_CONFLUENT_CLOUD_API_KEY: ${{ secrets.TF_VAR_CONFLUENT_CLOUD_API_KEY }}
-  TF_VAR_CONFLUENT_CLOUD_API_SECRET: ${{ secrets.TF_VAR_CONFLUENT_CLOUD_API_SECRET }}
+  VAR_CONFLUENT_CLOUD_API_KEY: ${{ secrets.VAR_CONFLUENT_CLOUD_API_KEY }}
+  VAR_CONFLUENT_CLOUD_API_SECRET: ${{ secrets.VAR_CONFLUENT_CLOUD_API_SECRET }}
 
   # Tell Terraform it's running in CI/CD
   TF_IN_AUTOMATION: true
@@ -63,8 +63,8 @@ jobs:
       - name: Terraform plan
         id: plan
         run: terraform plan -no-color -input=false
-          -var="confluent_cloud_api_key=$TF_VAR_CONFLUENT_CLOUD_API_KEY"
-          -var="confluent_cloud_api_secret=$TF_VAR_CONFLUENT_CLOUD_API_SECRET"
+          -var="confluent_cloud_api_key=$VAR_CONFLUENT_CLOUD_API_KEY"
+          -var="confluent_cloud_api_secret=$VAR_CONFLUENT_CLOUD_API_SECRET"
           -var="confluent_cloud_environment_name=${{ matrix.environment }}"
         continue-on-error: true
         working-directory: ${{ matrix.environment }}
