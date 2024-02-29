@@ -1,9 +1,10 @@
 name: Promote staging to prod
-run-name: ${{ github.actor }} wants to promote Staging to Prod í ½íº€
+run-name: ${{ github.actor }} wants to promote Staging to Prod ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 on:
   push:
     branches:
-      - main
+      # - main
+      - automation
     paths-ignore:
       - '**/README.md'
 
@@ -14,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - run: echo "í ½í´Ž Compare and sync directories"
+      - run: echo "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Compare and sync directories"
       - name: Compare and sync directories
         run: |
           # Exclude the 'specific' directory and compare staging and prod
