@@ -69,32 +69,32 @@ jobs:
         continue-on-error: true
         working-directory: ${{ matrix.environment }}
 
-      - uses: actions/github-script@v6
-        env:
-          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
-        with:
-          script: |
-            const output = `#### Terraform Format and Style í ½í¶Œ
-            #### Environment ${{ matrix.environment }} (CD)
-            #### Terraform Initialization âš™ï¸\`${{ steps.init.outcome }}\`
-            #### Terraform Validation í ¾í´–\`${{ steps.validate.outcome }}\`
-            #### Terraform Plan í ½í³–\`${{ steps.plan.outcome }}\`
+      # - uses: actions/github-script@v6
+      #   env:
+      #     PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+      #   with:
+      #     script: |
+      #       const output = `#### Terraform Format and Style ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      #       #### Environment ${{ matrix.environment }} (CD)
+      #       #### Terraform Initialization âš™ï¸\`${{ steps.init.outcome }}\`
+      #       #### Terraform Validation ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\`${{ steps.validate.outcome }}\`
+      #       #### Terraform Plan ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\`${{ steps.plan.outcome }}\`
 
-            <details><summary>Show Plan</summary>
+      #       <details><summary>Show Plan</summary>
 
-            \`\`\`\n
-            ${process.env.PLAN}
-            \`\`\`
+      #       \`\`\`\n
+      #       ${process.env.PLAN}
+      #       \`\`\`
 
-            </details>
-            *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+      #       </details>
+      #       *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            })
+      #       github.rest.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: output
+      #       })
 
       - name: Terraform Apply
         if: github.ref == 'main' && github.event.pull_request.merged
