@@ -20,12 +20,14 @@ terraform {
 
 variable "confluent_cloud_api_key" {
   description = "Confluent Cloud API Key (also referred as Cloud API ID)"
+  default = "EZ3AB4AE5U3NSASV"
   type        = string
   sensitive = "true"
 }
 
 variable "confluent_cloud_api_secret" {
   description = "Confluent Cloud API Secret"
+  default = "cgVo12P1v6ZlJEqK8aKdoPHmSaICmTI1NZoV43Q8uQlk7cKt/u4etS3mBsUpTybT"
   type        = string
   sensitive = "true"
 }
