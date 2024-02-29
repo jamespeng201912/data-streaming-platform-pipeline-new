@@ -38,5 +38,5 @@ jobs:
           commit-message: Sync staging to prod
           title: "Sync staging to prod ${{env.NOW}}"
           body: This PR is to sync the staging directory to the prod directory.
-          # branch: "sync-staging-to-prod-${{env.NOW}}"
-          branch: "abc"
+          branch: "sync-staging-to-prod-${{env.NOW}}"
+         
