@@ -1,4 +1,7 @@
 # 1234 Configure the Confluent Provider  cqz-2024-2-29
+# I had to change these settings under Settings-Action-General. As below 2 points:
+# 1、Workflow Permissions: Rean (sic) and Write
+# 2、Allow GitHub Actions to approve pull requests cqz-2024-3-1
 terraform {
   required_providers {
     confluent = {
