@@ -96,8 +96,8 @@ jobs:
       #         body: output
       #       })
       
-      - name: Terraform destroy
-      # - name: Terraform Apply
+     
+      - name: Terraform Apply
         # if: github.ref == 'main' && github.event.pull_request.merged
         # if: github.ref == 'abc' && github.event.pull_request.merged
         run: terraform destroy -auto-approve -input=false
